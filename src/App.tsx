@@ -293,6 +293,12 @@ function ProfileCreationPage() {
     }
   };
 
+  const handleAIAgentCreation = () => {
+    setProfileData(prev => ({ ...prev, aiAgentCreated: true }));
+    // Here you can add any additional logic for AI agent creation
+    console.log('AI Agent created with profile:', profileData);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 to-blue-50 pt-20">
       <div className="max-w-4xl mx-auto px-4 py-8">
@@ -552,15 +558,82 @@ function ProfileCreationPage() {
               <Bot className="w-16 h-16 mx-auto text-rose-500 mb-4" />
               <h2 className="text-2xl font-bold text-gray-800 mb-4">Create Your AI Agent</h2>
               <p className="text-gray-600 mb-8">
-                Your AI agent will help you find your perfect match by learning from your preferences and personality.
+                Your AI agent will use your profile information and personality type to help you find your perfect match.
               </p>
-              <button
-                type="button"
-                onClick={() => setProfileData(prev => ({ ...prev, aiAgentCreated: true }))}
-                className="bg-rose-500 text-white px-8 py-3 rounded-lg hover:bg-rose-600 transition-colors"
-              >
-                Create AI Agent
-              </button>
+
+              <div className="max-w-2xl mx-auto">
+                <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Profile Summary</h3>
+                  <div className="grid grid-cols-2 gap-4 text-left">
+                    <div>
+                      <h4 className="font-medium text-gray-700 mb-2">Personal Information</h4>
+                      <ul className="space-y-2 text-gray-600">
+                        <li>Age: {profileData.age}</li>
+                        <li>Gender: {profileData.gender}</li>
+                        <li>Profession: {profileData.profession}</li>
+                        <li>Location: {profileData.location}</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-700 mb-2">Preferences</h4>
+                      <ul className="space-y-2 text-gray-600">
+                        <li>Partner Age: {profileData.partnerAge}</li>
+                        <li>Partner Location: {profileData.partnerLocation}</li>
+                        <li>MBTI Type: {profileData.mbtiType}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">AI Agent Features</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="flex items-start space-x-3">
+                      <Sparkles className="w-6 h-6 text-rose-500 mt-1" />
+                      <div>
+                        <h4 className="font-medium text-gray-800">Smart Matching</h4>
+                        <p className="text-gray-600 text-sm">Uses advanced algorithms to find compatible matches</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <MessageCircle className="w-6 h-6 text-rose-500 mt-1" />
+                      <div>
+                        <h4 className="font-medium text-gray-800">Conversation Starter</h4>
+                        <p className="text-gray-600 text-sm">Helps initiate meaningful conversations</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <Target className="w-6 h-6 text-rose-500 mt-1" />
+                      <div>
+                        <h4 className="font-medium text-gray-800">Preference Learning</h4>
+                        <p className="text-gray-600 text-sm">Adapts to your preferences over time</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <Shield className="w-6 h-6 text-rose-500 mt-1" />
+                      <div>
+                        <h4 className="font-medium text-gray-800">Privacy Focused</h4>
+                        <p className="text-gray-600 text-sm">Your data is secure and protected</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Ready to Create Your AI Agent?</h3>
+                  <p className="text-gray-600 mb-6">
+                    Your AI agent will be personalized based on your profile information and personality type.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={handleAIAgentCreation}
+                    className="bg-rose-500 text-white px-8 py-3 rounded-lg hover:bg-rose-600 transition-colors flex items-center justify-center space-x-2 mx-auto"
+                  >
+                    <Bot className="w-5 h-5" />
+                    <span>Create AI Agent</span>
+                  </button>
+                </div>
+              </div>
             </div>
           )}
 
